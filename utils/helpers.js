@@ -1,15 +1,8 @@
-export function getDecks() {
-
-}
-
-export function getDeck(id) {
-
-}
-
-export function saveDeckTitle(title, card) {
-
-}
-
-export function addCardToDeck(title, card) {
-
+export function handleInitialData() {
+  return (dispatch) => {
+    return getDecks()
+      .then(({ decks }) => {
+        dispatch(receiveDecks(decks))
+      })
+  }
 }

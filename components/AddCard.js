@@ -2,50 +2,62 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import { KeyboardAvoidingView, View, Text, TextInput, StyleSheet, TouchableOpacity } from "react-native"
 import { white, gray, green } from "../utils/colors"
-import { addDeck } from "../actions"
-import { saveDeckTitle } from "../utils/api"
+import { addCard } from "../actions"
+import { addCardToDeck } from "../utils/api"
 
-class AddDeck extends Component {
+class AddCard extends Component {
   static navigationOptions = () => ({
-    title: "Add Deck"
+    title: "Add Card"
   })
 
   state = {
-    name: "",
+    question: "",
+    answer: ""
   }
 
   reset = () => {
     this.setState({
-      name: ""
+      question: "",
+      answer: ""
     })
   }
 
   handleSubmit = () => {
-    const { name } = this.state
-    this.props.addNewDeck(name)
-    saveDeckTitle(name)
+    const { deck } = this.props.navigation.state.params
+    const { question, answer } = this.state
+    this.props.addNewCard(deck, question, answer)
+    addCardToDeck(deck, { question, answer })
     this.props.navigation.goBack()
     this.reset()
   }
 
   render() {
-    const { name } = this.state
+    const { question, answer } = this.state
     return (
       <KeyboardAvoidingView behavior="height" style={styles.container}>
         <View style={styles.subContainer}>
-          <Text style={styles.label}>What is the name of your new deck?</Text>
+          <Text style={styles.label}>Question</Text>
           <TextInput
             style={styles.input}
-            value={name}
-            placeholder="Name of new deck"
-            onChangeText={name => this.setState({ name })}
+            value={question}
+            placeholder="Enter your question..."
+            onChangeText={question => this.setState({ question })}
+          />
+        </View>
+        <View style={styles.element}>
+          <Text style={styles.label}>Answer</Text>
+          <TextInput
+            style={styles.input}
+            value={answer}
+            placeholder="The answer..."
+            onChangeText={answer => this.setState({ answer })}
           />
         </View>
         <TouchableOpacity
           onPress={() => this.handleSubmit()}
           style={styles.startQuizBtn}
         >
-          <Text style={[{ color: white, fontSize: 20, textAlign: 'center' }, styles.center]}>Add New Deck</Text>
+          <Text style={[{ color: white, fontSize: 20, textAlign: 'center' }, styles.center]}>Add Card</Text>
         </TouchableOpacity>
       </KeyboardAvoidingView>
     )
@@ -99,7 +111,7 @@ const styles = StyleSheet.create({
 
 
 const mapDispatchToProps = dispatch => ({
-  addNewDeck: (title) =>
-    dispatch(addDeck(title))
+  addNewCard: (deck, question, answer) =>
+    dispatch(addCard({ question, answer }, deck))
 });
-export default connect(null, mapDispatchToProps)(AddDeck)
+export default connect(null, mapDispatchToProps)(AddCard)
