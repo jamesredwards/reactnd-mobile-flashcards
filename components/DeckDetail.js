@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, Platform, SafeAreaView, TouchableOpacity, Button } from 'react-native'
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native'
 import { green, blue, white, gray } from '../utils/colors'
 import { connect } from 'react-redux'
 
 class DeckDetail extends Component {
   render() {
-    //console.log("DECK DETAIL ", this.props)
+
     const { deck, navigation } = this.props
     return (
       <View style={styles.container}>
@@ -39,20 +39,6 @@ const mapStateToProps = (state, { navigation }) => ({
 export default connect(mapStateToProps)(DeckDetail);
 
 const styles = StyleSheet.create({
-  button: {
-    borderRadius: 5,
-    width: 250,
-    margin: 10,
-    alignItems: 'center',
-    backgroundColor: green,
-    padding: 20,
-  },
-  numCards: {
-    fontSize: 20,
-    textAlign: 'center',
-    color: blue,
-    marginBottom: 5,
-  },
   name: {
     fontSize: 35,
     textAlign: "center",
@@ -76,11 +62,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 100,
   },
-  row: {
-    flexDirection: 'row',
-    flex: 1,
-    alignItems: 'center',
-  },
   startQuizBtn: {
     backgroundColor: green,
     padding: 10,
@@ -100,17 +81,6 @@ const styles = StyleSheet.create({
     marginRight: 40,
     marginTop: 20,
     width: 300,
-  },
-  AndroidSubmitBtn: {
-    backgroundColor: blue,
-    padding: 10,
-    paddingLeft: 30,
-    paddingRight: 30,
-    height: 45,
-    borderRadius: 2,
-    alignSelf: 'flex-end',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   submitBtnText: {
     color: white,

@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, TouchableOpacity, Platform, SafeAreaView } from 'react-native'
-import { connect } from 'react-redux'
-import Card from '../components/Card'
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native'
 import QuizButtons from './QuizButtons'
-import { gray, white, blue } from '../utils/colors'
+import { white, blue } from '../utils/colors'
 import TextButton from '../components/TextButton'
 import Results from '../components/Result'
+import { clearLocalNotifications, setLocalNotification } from '../utils/helpers'
 
 class Quiz extends Component {
 
@@ -30,7 +29,7 @@ class Quiz extends Component {
   }
 
   showAnswer = () => {
-    this.setState(state => ({
+    this.setState(({
       displayAnswer: !this.state.displayAnswer
     }))
   }
@@ -48,9 +47,9 @@ class Quiz extends Component {
 
     if (questionIdx === deck.questions.length - 1) {
       displayResults = true
-      //set notification that quiz completed
-
-      //set tomorrow's notification
+      //disable today's notification then set notification that quiz completed
+      clearLocalNotifications()
+      setLocalNotification()
     }
 
     questionIdx += 1
@@ -62,9 +61,6 @@ class Quiz extends Component {
       displayResults,
       displayAnswer,
     })
-    console.log(this.state.displayResults)
-    console.log(deck)
-    console.log(this.state)
   }
 
   render() {
@@ -72,7 +68,6 @@ class Quiz extends Component {
 
     const { correctCount, incorrectCount, questionIdx, displayResults } = this.state
     const numQuestions = deck.questions.length
-    console.log(correctCount, incorrectCount, questionIdx, displayResults)
 
     return !displayResults ? (
       <View style={styles.container}>
@@ -134,19 +129,6 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     borderWidth: 0.5,
     height: 100,
-  },
-  count: {
-    color: gray,
-    fontSize: 20,
-    marginTop: 10
-  },
-  center: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginLeft: 30,
-    marginRight: 30,
-    marginTop: 5
   },
   questionText: {
     fontSize: 20,

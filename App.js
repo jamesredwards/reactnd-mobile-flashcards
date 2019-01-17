@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Platform, SafeAreaView, StatusBar } from 'react-native'
+import { StyleSheet, View, SafeAreaView, StatusBar } from 'react-native'
 import { Constants } from 'expo'
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from './reducers'
-import { blue, green, lightblue, white, purple, azure } from './utils/colors'
-import { FontAwesome, Ionicons } from '@expo/vector-icons'
+import { blue, white } from './utils/colors'
+import { Entypo } from '@expo/vector-icons'
 import DeckList from './components/DeckList'
-import Quiz from './components/Quiz'
 import DeckDetail from './components/DeckDetail'
 import AddCard from './components/AddCard'
-
 import AddDeck from './components/AddDeck'
-
+import Quiz from './components/Quiz'
+import { setLocalNotification } from './utils/helpers'
 
 
 
@@ -32,7 +31,7 @@ const Tabs = createBottomTabNavigator(
       navigationOptions: ({ navigation }) => ({
         tabBarLabel: "Decks",
         tabBarIcon: ({ tintColor }) => (
-          <Ionicons name='ios-list' size={30} color={tintColor} />
+          <Entypo name='list' size={30} color={tintColor} />
         )
       })
     },
@@ -41,7 +40,7 @@ const Tabs = createBottomTabNavigator(
       navigationOptions: ({ navigation }) => ({
         tabBarLabel: "Add Deck",
         tabBarIcon: ({ tintColor }) => (
-          <FontAwesome name="plus-square" size={30} color={tintColor} />
+          <Entypo name="squared-plus" size={30} color={tintColor} />
         )
       })
     }
@@ -53,7 +52,7 @@ const Tabs = createBottomTabNavigator(
     tabBarOptions: {
       activeTintColor: blue,
       style: {
-        height: 60,
+        height: 70,
         backgroundColor: white,
         shadowColor: "rgba(0, 0, 0, 0.24)",
         shadowOffset: {
@@ -79,18 +78,23 @@ const MainNavigator = createStackNavigator(
     Quiz: Quiz,
     DeckDetail: DeckDetail,
     AddCard: AddCard,
+    Quiz: Quiz,
   },
   {
     initialRouteName: "Home",
     navigationOptions: ({ navigation }) => ({
       headerTintColor: white,
       headerStyle: { backgroundColor: blue },
-      headerTitleStyle: { fontWeight: "bold" },
+      headerTitleStyle: { fontColor: white, fontWeight: "bold" },
     })
   }
 );
 
-class App extends React.Component {
+class App extends Component {
+
+  componentDidMount() {
+    setLocalNotification()
+  }
 
   render() {
 
@@ -110,6 +114,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
+  bottomTab: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'stretch'
+  }
 });
 
 export default App

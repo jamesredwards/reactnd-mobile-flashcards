@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Text, View, StyleSheet, Platform, FlatList, ActivityIndicator } from 'react-native'
+import { Text, View, StyleSheet, FlatList, ActivityIndicator } from 'react-native'
 import { getDecks } from '../utils/api'
 import { receiveDecks } from '../actions'
 import { blue } from '../utils/colors'
@@ -15,13 +15,11 @@ class DeckList extends Component {
     getDecks()
       .then((decks) => this.props.dispatch(receiveDecks(decks)))
       .then((decks) => { this.setState({ decksReceived: decks !== null }) })
-    //.then((decks) => console.log(decks))
   }
 
   render() {
 
     const { decks, navigation } = this.props
-    //console.log("RENDER: ", Object.values(decks).length)
 
     //taking time, show a loading signal
     if (!this.state.decksReceived) {
@@ -34,7 +32,6 @@ class DeckList extends Component {
     }
 
     //we have cards in the deck
-    //console.log(Object.values(decks))
     if (Object.values(decks).length > 0) {
       return (
         <View style={styles.container}>
@@ -68,12 +65,6 @@ function mapStateToProps(decks, { navigation }) {
     navigation: navigation,
   }
 }
-
-/*function mapDispatchToProps({ dispatch }) {
-  return {
-    receiveDecks: (decks) => dispatch(receiveDecks(decks))
-  }
-}*/
 
 const styles = StyleSheet.create({
   text: {

@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import { Text, View, StyleSheet, Platform, SafeAreaView, TouchableOpacity } from 'react-native'
-import { blue, white, purple } from '../utils/colors'
+import React from 'react'
+import { Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { blue, white } from '../utils/colors'
 
 export default function Deck({ title, numQuestions, navigation }) {
 
@@ -27,12 +27,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginBottom: 5
   },
-  deckTitle: {
-    textAlign: 'center',
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: blue
-  },
   container: {
     flex: 1,
     padding: 20,
@@ -40,35 +34,6 @@ const styles = StyleSheet.create({
     borderColor: blue,
     borderRadius: 4,
     borderWidth: 0.5,
-  },
-  row: {
-    flexDirection: 'row',
-    flex: 1,
-    alignItems: 'center',
-  },
-  iosSubmitBtn: {
-    backgroundColor: blue,
-    padding: 10,
-    borderRadius: 7,
-    height: 45,
-    marginLeft: 40,
-    marginRight: 40,
-  },
-  AndroidSubmitBtn: {
-    backgroundColor: blue,
-    padding: 10,
-    paddingLeft: 30,
-    paddingRight: 30,
-    height: 45,
-    borderRadius: 2,
-    alignSelf: 'flex-end',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  submitBtnText: {
-    color: white,
-    fontSize: 22,
-    textAlign: 'center',
   },
   center: {
     flex: 1,

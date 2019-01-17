@@ -31,7 +31,6 @@ export default function Results({ correct, incorrect, restartQuiz, navigation })
   const score = correct / (correct + incorrect)
   const message = getMessage(score)
 
-
   return (
     <View style={styles.container}>
       <View style={styles.center}>
@@ -63,12 +62,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: green,
     padding: 20,
-  },
-  numCards: {
-    fontSize: 20,
-    textAlign: 'center',
-    color: blue,
-    marginBottom: 5,
   },
   header: {
     fontSize: 35,
