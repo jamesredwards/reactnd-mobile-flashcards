@@ -62,6 +62,7 @@ class Quiz extends Component {
       displayResults,
       displayAnswer,
     })
+    console.log(this.state.displayResults)
     console.log(deck)
     console.log(this.state)
   }
@@ -71,8 +72,9 @@ class Quiz extends Component {
 
     const { correctCount, incorrectCount, questionIdx, displayResults } = this.state
     const numQuestions = deck.questions.length
+    console.log(correctCount, incorrectCount, questionIdx, displayResults)
 
-    return !this.displayResults ? (
+    return !displayResults ? (
       <View style={styles.container}>
         <View>
           {this.state.displayAnswer
@@ -103,7 +105,12 @@ class Quiz extends Component {
         </View>
       </View>)
       : (
-        <Results correct={correctCount} incorrect={incorrectCount} restartQuiz={this.reset} navigation={this.props.navigation} />
+        <Results
+          correct={correctCount}
+          incorrect={incorrectCount}
+          restartQuiz={this.reset}
+          navigation={this.props.navigation}
+        />
       )
   }
 }

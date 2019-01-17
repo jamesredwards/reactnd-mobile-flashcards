@@ -1,14 +1,43 @@
 import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
-import { purple, white, gray, green, blue } from "../utils/colors";
+import { white, gray, green, blue } from "../utils/colors";
 
-export function Results({ correct, incorrect, restartQuiz, navigation }) {
+function between(n, low, high) {
+  return (n >= low && n <= high)
+}
+
+function getMessage(score) {
+  if (between(score, 0, 0.25)) {
+    return "Did you even study?!"
+  }
+  if (between(score, 0.26, 0.5)) {
+    return "More work to do on this one!"
+  }
+  if (between(score, 0.51, 0.75)) {
+    return "Getting there, keep at it!"
+  }
+  if (between(score, 0.76, 0.99)) {
+    return "Great work, nearly perfect!"
+  }
+  else if (score === 1.0) {
+    return "Great work genius!"
+  }
+  else {
+    return "I'm not sure what to do with that score!"
+  }
+}
+
+export default function Results({ correct, incorrect, restartQuiz, navigation }) {
   const score = correct / (correct + incorrect)
+  const message = getMessage(score)
+
+
   return (
     <View style={styles.container}>
       <View style={styles.center}>
-        <Text style={styles.name}>You scored</Text>
-        <Text style={styles.text}>{score.toFixed(0) * 100}%</Text>
+        <Text style={styles.header}>You scored</Text>
+        <Text style={styles.score}>{(score * 100).toFixed(0)}%</Text>
+        <Text style={styles.message}>{message}</Text>
         <TouchableOpacity
           onPress={() => restartQuiz()}
           style={styles.startQuizBtn}
@@ -16,7 +45,7 @@ export function Results({ correct, incorrect, restartQuiz, navigation }) {
           <Text style={[{ color: white, fontSize: 20, textAlign: 'center' }, styles.center]}>Retake Quiz</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.navigate.goBack()}
+          onPress={() => navigation.goBack()}
           style={styles.addCardBtn}
         >
           <Text style={[{ color: white, fontSize: 20, textAlign: 'center' }, styles.center]}>Back to Deck</Text>
@@ -41,13 +70,20 @@ const styles = StyleSheet.create({
     color: blue,
     marginBottom: 5,
   },
-  name: {
+  header: {
     fontSize: 35,
     textAlign: "center",
     marginBottom: 5,
     fontWeight: 'bold',
   },
-  text: {
+  score: {
+    fontSize: 35,
+    textAlign: "center",
+    marginBottom: 5,
+    fontWeight: 'bold',
+    color: blue,
+  },
+  message: {
     fontSize: 20,
     textAlign: "center",
     marginBottom: 5,
@@ -63,11 +99,6 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     alignItems: 'center',
     height: 100,
-  },
-  row: {
-    flexDirection: 'row',
-    flex: 1,
-    alignItems: 'center',
   },
   startQuizBtn: {
     backgroundColor: green,
@@ -88,22 +119,6 @@ const styles = StyleSheet.create({
     marginRight: 40,
     marginTop: 20,
     width: 300,
-  },
-  AndroidSubmitBtn: {
-    backgroundColor: blue,
-    padding: 10,
-    paddingLeft: 30,
-    paddingRight: 30,
-    height: 45,
-    borderRadius: 2,
-    alignSelf: 'flex-end',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  submitBtnText: {
-    color: white,
-    fontSize: 22,
-    textAlign: 'center',
   },
   center: {
     flex: 1,
