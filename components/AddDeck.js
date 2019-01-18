@@ -6,9 +6,9 @@ import { addDeck } from "../actions"
 import { saveDeckTitle } from "../utils/api"
 
 class AddDeck extends Component {
-  static navigationOptions = () => ({
+  static navigationOptions = {
     title: "Add Deck"
-  })
+  }
 
   state = {
     name: "",
@@ -24,7 +24,8 @@ class AddDeck extends Component {
     const { name } = this.state
     this.props.addNewDeck(name)
     saveDeckTitle(name)
-    this.props.navigation.goBack()
+    console.log("ADD DECK: ", this.props)
+    this.props.navigation.navigate(name)
     this.reset()
   }
 

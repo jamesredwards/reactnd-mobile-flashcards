@@ -78,17 +78,56 @@ const MainNavigator = createStackNavigator(
     Quiz: Quiz,
     DeckDetail: DeckDetail,
     AddCard: AddCard,
-    Quiz: Quiz,
   },
   {
     initialRouteName: "Home",
     navigationOptions: ({ navigation }) => ({
       headerTintColor: white,
       headerStyle: { backgroundColor: blue },
-      headerTitleStyle: { fontColor: white, fontWeight: "bold" },
+      headerTitleStyle: { color: white, fontWeight: "bold" },
     })
   }
-);
+)
+
+/*const MainNavigator = createStackNavigator(
+  {
+    Home: {
+      screen: Tabs,
+      navigationOptions: {
+        headerStyle: {
+          backgroundColor: blue,
+        }
+      }
+    },
+    Quiz: {
+      screen: Quiz,
+      navigationOptions: {
+        headerTintColor: white,
+        headerStyle: {
+          backgroundColor: blue,
+        }
+      }
+    },
+    DeckDetail: {
+      screen: DeckDetail,
+      navigationOptions: {
+        headerTintColor: white,
+        headerStyle: {
+          backgroundColor: blue,
+        }
+      }
+    },
+    AddCard: {
+      screen: AddCard,
+      navigationOptions: {
+        headerTintColor: white,
+        headerStyle: {
+          backgroundColor: blue,
+        }
+      }
+    },
+  }
+)*/
 
 class App extends Component {
 

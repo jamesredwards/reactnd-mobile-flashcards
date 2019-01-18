@@ -6,9 +6,9 @@ import { addCard } from "../actions"
 import { addCardToDeck } from "../utils/api"
 
 class AddCard extends Component {
-  static navigationOptions = () => ({
+  static navigationOptions = {
     title: "Add Card"
-  })
+  }
 
   state = {
     question: "",

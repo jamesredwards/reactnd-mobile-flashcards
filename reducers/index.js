@@ -20,7 +20,7 @@ function decks(state = {}, action) {
       const newDeck = { ...deck, questions }
       return {
         ...state,
-        [action.deck]: newDeck
+        [action.deck.title]: newDeck
       }
     default:
       return state

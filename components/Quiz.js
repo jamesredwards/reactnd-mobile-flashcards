@@ -49,7 +49,7 @@ class Quiz extends Component {
       displayResults = true
       //disable today's notification then set notification that quiz completed
       clearLocalNotifications()
-      setLocalNotification()
+        .then(setLocalNotification())
     }
 
     questionIdx += 1

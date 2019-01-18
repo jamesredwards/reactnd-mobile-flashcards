@@ -4,6 +4,7 @@ import { green, blue, white, gray } from '../utils/colors'
 import { connect } from 'react-redux'
 
 class DeckDetail extends Component {
+
   render() {
 
     const { deck, navigation } = this.props
