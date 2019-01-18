@@ -15,7 +15,6 @@ import Quiz from './components/Quiz'
 import { setLocalNotification } from './utils/helpers'
 
 
-
 function UdaciStatusBar({ backgroundColor, ...props }) {
   return (
     <View style={{ backgroundColor, height: Constants.statusBarHeight }}>
