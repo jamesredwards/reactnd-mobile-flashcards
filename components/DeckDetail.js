@@ -5,6 +5,13 @@ import { connect } from 'react-redux'
 
 class DeckDetail extends Component {
 
+  static navigationOptions = ({ navigation }) => {
+    const { title } = navigation.state.params
+    return {
+      title: title,
+    }
+  }
+
   render() {
 
     const { deck, navigation } = this.props

@@ -89,46 +89,6 @@ const MainNavigator = createStackNavigator(
   }
 )
 
-/*const MainNavigator = createStackNavigator(
-  {
-    Home: {
-      screen: Tabs,
-      navigationOptions: {
-        headerStyle: {
-          backgroundColor: blue,
-        }
-      }
-    },
-    Quiz: {
-      screen: Quiz,
-      navigationOptions: {
-        headerTintColor: white,
-        headerStyle: {
-          backgroundColor: blue,
-        }
-      }
-    },
-    DeckDetail: {
-      screen: DeckDetail,
-      navigationOptions: {
-        headerTintColor: white,
-        headerStyle: {
-          backgroundColor: blue,
-        }
-      }
-    },
-    AddCard: {
-      screen: AddCard,
-      navigationOptions: {
-        headerTintColor: white,
-        headerStyle: {
-          backgroundColor: blue,
-        }
-      }
-    },
-  }
-)*/
-
 class App extends Component {
 
   componentDidMount() {

@@ -8,6 +8,13 @@ import { clearLocalNotifications, setLocalNotification } from '../utils/helpers'
 
 class Quiz extends Component {
 
+  static navigationOptions = ({ navigation }) => {
+    const { deck } = navigation.state.params
+    return {
+      title: deck.title,
+    }
+  }
+
   state = {
     correctCount: 0,
     incorrectCount: 0,
