@@ -15,6 +15,7 @@ class DeckDetail extends Component {
   render() {
 
     const { deck, navigation } = this.props
+    console.log(deck)
     return (
       <View style={styles.container}>
         <View style={styles.center}>
@@ -40,9 +41,12 @@ class DeckDetail extends Component {
   }
 }
 
-const mapStateToProps = (state, { navigation }) => ({
-  deck: state[navigation.getParam("title")]
-});
+function mapStateToProps(state, { navigation }) {
+  const { title } = navigation.state.params
+  return {
+    deck: state[title]
+  }
+}
 
 export default connect(mapStateToProps)(DeckDetail);
 

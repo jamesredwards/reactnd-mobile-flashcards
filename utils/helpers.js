@@ -4,7 +4,6 @@ import { Notifications, Permissions } from 'expo'
 
 const NOTIFICATION_KEY = 'mobile-flashcards:notifications'
 
-
 export function getDailyReminderValue() {
   return {
     today: "Don't forget to log your data today!"

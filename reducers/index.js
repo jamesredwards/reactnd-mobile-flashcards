@@ -1,7 +1,6 @@
 import { RECEIVE_DECKS, ADD_DECK, ADD_CARD } from '../actions'
 
 function decks(state = {}, action) {
-  //console.log("AXCTION.DECKS ", action.decks)
   switch (action.type) {
     case RECEIVE_DECKS:
       return {

@@ -4,9 +4,9 @@ import { KeyboardAvoidingView, View, Text, TextInput, StyleSheet, TouchableOpaci
 import { white, gray, green } from "../utils/colors"
 import { addDeck } from "../actions"
 import { saveDeckTitle } from "../utils/api"
-import { NavigationActions } from 'react-navigation'
 
 class AddDeck extends Component {
+
   static navigationOptions = {
     title: "Add Deck"
   }
@@ -23,14 +23,9 @@ class AddDeck extends Component {
 
   handleSubmit = () => {
     const { name } = this.state
-    this.props.addNewDeck(name)
+    this.props.addNewDeck({ [name]: { title: name, questions: [] } })
     saveDeckTitle(name)
-    console.log("ADD DECK: ", this.props)
-    //this.props.navigation.push(name)
-    /*this.props.navigation.actions.navigate({ routeName: 'Home' })
-    this.props.navigation.actions.navigate({ routeName: 'DeckDetail', params: { title: name } })*/
     this.props.navigation.navigate('DeckDetail', { title: name })
-    //this.props.navigation.pop()
     this.reset()
   }
 
