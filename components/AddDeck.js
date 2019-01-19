@@ -8,7 +8,7 @@ import { saveDeckTitle } from "../utils/api"
 class AddDeck extends Component {
 
   static navigationOptions = {
-    title: "Add Deck"
+    title: "Add Deck",
   }
 
   state = {

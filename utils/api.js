@@ -1,6 +1,6 @@
 import { AsyncStorage } from 'react-native'
 
-const STORAGE_KEY = 'test4'
+const STORAGE_KEY = 'reactnd:native:mobile-flashcards:storage'
 
 const initialData = {
   React: {

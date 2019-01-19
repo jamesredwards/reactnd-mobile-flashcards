@@ -37,6 +37,7 @@ const Tabs = createBottomTabNavigator(
     AddDeck: {
       screen: AddDeck,
       navigationOptions: ({ navigation }) => ({
+        title: 'Add Deck',
         tabBarLabel: "Add Deck",
         tabBarIcon: ({ tintColor }) => (
           <Entypo name="squared-plus" size={30} color={tintColor} />
